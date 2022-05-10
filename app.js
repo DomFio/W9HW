@@ -21,23 +21,19 @@ app.get('/', (req, res) =>{
 })
 
 app.get('/home', (req,res)=>{
-    res.send('home page')
+    res.render('pages/home')
 })
 
 app.get('/profile', (req,res)=>{
-    res.send("Your Profile Here")
+    res.render("pages/profile")
 })
 
 app.get('/login', (req,res)=>{
-    res.send("Login Here")
+    res.render("pages/login")
 })
 
 app.get('/register', (req,res)=>{
-    res.send("Register Here")
-})
-
-app.get('/user', (req,res)=>{
-    res.send("User Page")
+    res.render("pages/register")
 })
 
 //using middleware
