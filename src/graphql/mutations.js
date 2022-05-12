@@ -21,8 +21,9 @@ const register = {
         const user = new User({ username, email, password })
 
         await user.save()
-
+        
         const token = createJwtToken(user)
+        console.log(`here is my token ${token}`)
         return token
     }
 }

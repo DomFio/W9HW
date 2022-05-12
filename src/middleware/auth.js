@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken")
 const unprotectedRoutes = [
-        "/auth/login",
-        "/auth/register",
-        "/graphql"
+    "/auth/login",
+    "/auth/register",
+    "/graphql"
 ]
 
 const authenticate = async (req, res, next) => {

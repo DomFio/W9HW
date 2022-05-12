@@ -5,15 +5,17 @@ const { graphqlHTTP } = require('express-graphql');
 const schema = require('./src/graphql/schema')
 const { authenticate } = require('./src/middleware/auth')
 const cookieParser = require('cookie-parser')
+const { userData } = require('./src/middleware/userData')
 const path = require('path');
-const app = express();
 const port = 3000
 
 dotenv.config()
+const app = express();
 
 connectDB()
-
 app.use(cookieParser())
+app.use(authenticate)
+
 
 app.use("/graphql", graphqlHTTP({
     schema,
@@ -21,6 +23,7 @@ app.use("/graphql", graphqlHTTP({
 }))
 
 app.use(express.urlencoded({ extended: true }))
+app.use(userData)
 
 require("./src/routes")(app);
 
@@ -33,33 +36,32 @@ app.set('view engine', 'ejs')
 
 app.set('views', path.join(__dirname, '/src/templates/views'));
 
-app.use(authenticate)
 
-const user = {
-    firstName: 'Dominic',
-    lastName: 'Fiorelli'
-}
+// const user = {
+//     firstName: 'Dominic',
+//     lastName: 'Fiorelli'
+// }
 
-//creating routes
-app.get('/', (req, res) =>{
-    res.render('views/index', {user:user})
-})
+// //creating routes
+// app.get('/', (req, res) =>{
+//     res.render('views/index', {user:user})
+// })
 
-app.get('/home', (req,res)=>{
-    res.render('views/home')
-})
+// app.get('/home', (req,res)=>{
+//     res.render('views/home')
+// })
 
-app.get('/profile', (req,res)=>{
-    res.render("views/profile")
-})
+// app.get('/profile', (req,res)=>{
+//     res.render("views/profile")
+// })
 
 // app.get('/login', (req,res)=>{
 //     res.render("views/login")
 // })
 
-app.get('/register', (req,res)=>{
-    res.render("views/register")
-})
+// app.get('/register', (req,res)=>{
+//     res.render("views/register")
+// })
 
 //using middleware
 app.use((req,res,next) =>{

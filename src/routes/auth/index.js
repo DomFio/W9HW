@@ -9,6 +9,6 @@ MainAuthRouter.route("/register")
     .post(require(("./register.js")))
 
 MainAuthRouter.route("/logout")
-    .get(require(("./logout")))
+    .get(require(("./logout.js")))
 
 module.exports = MainAuthRouter

@@ -1,15 +1,10 @@
-// module.exports = function(app) {
-//     app.use("/auth", require("./auth"))
-//     /*  
-//     app.use("/quiz", require("./quiz"))
-//     app.use("/", require("./dashboard")) 
-//     */
-// };
-
 const MainDashboardRouter = require("express").Router()
 
+MainDashboardRouter.route("/")
+    .get(require("./dashboard.view.js"))
 
-
-
+MainDashboardRouter.route("/home")
+    .get(require("./posts.view.js"))
 
 module.exports = MainDashboardRouter
+

@@ -3,20 +3,20 @@ const { UserType, PostType } = require('./types');
 const { User, Post } = require('../models')
 
 const users = {
-    type: new GraphQLList(UserType),
-    description: 'Query all users in the database',
-    resolve(parent,args) {
+    type : new GraphQLList(UserType),
+    description : 'Query all users in the database',
+    resolve( parent, args) {
         return User.find()
     }
 }
 
 const user = {
-    type: UserType,
-    description: 'Query user by id',
-    args: {
-        id: {GraphQLID}
+    type : UserType,
+    description : 'Query user by id',
+    args:{
+        id: { type: GraphQLID }
     },
-    resolve(parent, args) {
+    resolve( parent, args) {
         return User.findById(args.id)
     }
 }
