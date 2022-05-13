@@ -1,7 +1,7 @@
 const { GraphQLObjectType, GraphQLInputObjectType, 
 	GraphQLID, GraphQLString, GraphQLList, GraphQLInt, 
 	GraphQLBoolean, GraphQLFloat } = require('graphql');
-const { User, Quiz, Question, Submission } = require('../models');
+const { User, Post } = require('../models');
 
 const UserType = new GraphQLObjectType({
     name: 'User',

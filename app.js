@@ -7,7 +7,6 @@ const { authenticate } = require('./src/middleware/auth')
 const cookieParser = require('cookie-parser')
 const { userData } = require('./src/middleware/userData')
 const path = require('path');
-const port = 3000
 
 dotenv.config()
 const app = express();
@@ -27,43 +26,14 @@ app.use(userData)
 
 require("./src/routes")(app);
 
-app.listen(port, ()=>{
-    console.log(`hello world app listening at port: ${port}`)
-})
 
 // Setting Templates
 app.set('view engine', 'ejs')
 
 app.set('views', path.join(__dirname, '/src/templates/views'));
 
-
-// const user = {
-//     firstName: 'Dominic',
-//     lastName: 'Fiorelli'
-// }
-
-// //creating routes
-// app.get('/', (req, res) =>{
-//     res.render('views/index', {user:user})
-// })
-
-// app.get('/home', (req,res)=>{
-//     res.render('views/home')
-// })
-
-// app.get('/profile', (req,res)=>{
-//     res.render("views/profile")
-// })
-
-// app.get('/login', (req,res)=>{
-//     res.render("views/login")
-// })
-
-// app.get('/register', (req,res)=>{
-//     res.render("views/register")
-// })
-
-//using middleware
+    
+    //using middleware
 app.use((req,res,next) =>{
     console.log('TimeStamp:', Date())
     next()
@@ -71,3 +41,7 @@ app.use((req,res,next) =>{
 
 //Accessing Static files with middleware
 app.use(express.static(path.join(__dirname, 'public')))
+
+app.listen(process.env.PORT, ()=>{
+    console.log(`hello world app listening at port: ${process.env.PORT}`)
+})

@@ -13,7 +13,6 @@ const userData = async (req, res, next) => {
                 id,
                 posts {
                     id,
-                    userId,
                     user {
                         id,
                         username
@@ -21,7 +20,6 @@ const userData = async (req, res, next) => {
                 }
             } 
         }`
-
     console.log(req.verifiedUser.user._id)
     let data = {}
     try {
@@ -38,7 +36,7 @@ const userData = async (req, res, next) => {
             }
         }); 
     } catch(e) {
-        console.log(e)
+        console.log(e.response.data.errors)
     }
 
     req.verifiedUser.user.posts = data.data.data.user?.posts ?? []

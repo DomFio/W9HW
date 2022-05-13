@@ -32,4 +32,12 @@ const postById = {
     }
 }
 
-module.exports = {users, user, postById}
+const posts = {
+    type: new GraphQLList(PostType),
+    description: 'Query all posts by a user',
+    resolve( parent, args) {
+        return Post.find()
+    }
+}
+
+module.exports = {users, user, postById, posts}

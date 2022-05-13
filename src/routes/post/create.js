@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
     const postData = {
         userId: req.verifiedUser.user._id,
         title: postInputs['postTitle'],
-        description: quizInputs['postDescription'],
+        description: postInputs['postDescription'],
     }
 
     
@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
         const { data } = await axios.post(process.env.GRAPHQL_ENDPOINT, 
             { 
                 query: mutation,
-                variables: quizData
+                variables: postData
             },
             {
                 headers: {
