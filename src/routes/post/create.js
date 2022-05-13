@@ -6,15 +6,13 @@ module.exports = async (req, res) => {
     
     const postData = {
         userId: req.verifiedUser.user._id,
-        title: postInputs['postTitle'],
-        description: postInputs['postDescription'],
+        twatPost: postInputs['posttwatPost'],
+        // description: postInputs['postDescription'],
     }
 
-    
-
     const mutation = `
-        mutation createPost($userId: String!, $title: String!) { 
-            createPost( userId: $userId, title: $title, description: $description )
+        mutation createPost($userId: String!, $twatPost: String!) { 
+            createPost( userId: $userId, twatPost: $twatPost )
         }`
 
     try {
@@ -29,9 +27,10 @@ module.exports = async (req, res) => {
                 }
             });   
         console.log(data)
+        console.log(postData)
     } catch(e) {
         console.log(e)
     }   
 
-    res.redirect(`/posts/success/${post}`)
+    res.redirect(`/`)
 }

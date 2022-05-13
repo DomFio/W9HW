@@ -1,21 +1,25 @@
 <%- include('../partials/header.ejs') %>
 <main class="container">
-    <h1 class="my-4">Tweeta - Dashboard</h1>
-    
-    <div>
-        <input type="text" placeholder="annoying post here">
-        <button type="button" class="btn btn-primary" href="/post/create">Create Post</button>
-    </div>
+    <h1 class="my-4">Twatter - Dashboard</h1>
+    <form action="/post/create" method="POST">
+        <div>
+            <input name="posttwatPost" type="text" placeholder="annoying post here">
+            <button type="submit" class="btn btn-primary">Create Post</button>
+        </div>
+    </form>
     <div>
         <h1>Posts</h1>
         <hr>
-        <div class="card" style="width: 36rem;">
-            <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
+        <% if (user.posts) {user.posts.forEach((post) => { %>
+         
+            <div class="card" style="width: 36rem;">
+                <div class="card-body">
+                    <p class="card-text"><%= post.twatPost %> </p>
+                    
+                </div>
             </div>
-        </div>
+            <% })} %>
     </div>
 </main>
 
-  <%- include('../partials/footer.ejs') %>
+<%- include('../partials/footer.ejs') %>

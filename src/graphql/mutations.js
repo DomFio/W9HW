@@ -48,7 +48,7 @@ const login = {
 const createPost = {
     type: GraphQLString,
     args: {
-        text: {
+        twatPost: {
             type: GraphQLString
         },
         userId: {
@@ -58,7 +58,7 @@ const createPost = {
     async resolve(parent, args) {
 
         const post = new Post({
-            text: args.text,
+            twatPost: args.twatPost,
             userId: args.userId,
             createdDate: (new Date()).toString()
         })

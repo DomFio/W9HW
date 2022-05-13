@@ -13,6 +13,7 @@ const userData = async (req, res, next) => {
                 id,
                 posts {
                     id,
+                    twatPost,
                     user {
                         id,
                         username

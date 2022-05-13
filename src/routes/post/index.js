@@ -1,9 +1,9 @@
 const PostDashboardRouter = require("express").Router()
 
 PostDashboardRouter.route("/create")
-    .post(require("./create.js"))
+    .post(require("./create"))
 
-PostDashboardRouter.route("/")
-    .get(require("./view.js"))
+PostDashboardRouter.route("/:id")
+    .get(require("./view"))
 
 module.exports = PostDashboardRouter
